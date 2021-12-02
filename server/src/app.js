@@ -14,4 +14,10 @@ app.get("/", (req, res) => {
   });
 });
 
+app.post("/register", (req, res) => {
+  res.send({
+    message: "Your user"+req.body.email+"was registered, have fun!",
+  });
+});
+
 app.listen(8081);
