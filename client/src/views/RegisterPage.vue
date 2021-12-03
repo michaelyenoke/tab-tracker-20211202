@@ -1,62 +1,60 @@
 <template>
   <div class="container">
-    <h1>Register</h1>
-    <input
-          type='email'
-          text='email'
-          v-model='email'
-          placeholder='email' />
-    <br>
-    <input
-          type='password'
-          text='password'
-          v-model='password'
-          placeholder='password' />
-    <br>
-    <div class='error' v-html='error' /> 
-    <br>
-    <button
-      @click='register'>
-      Register
-    </button>
-
+    <v-layout custom>
+      <v-flex sm-12>
+        <panel title="Register">
+          <form name="tab-tracker-form" autocomplete="off">
+            <v-text-field label="Email" v-model="email"></v-text-field>
+            <br />
+            <v-text-field
+              label="Password"
+              type="password"
+              v-model="password"
+              autocomplete="new-password"
+            ></v-text-field>
+          </form>
+          <br />
+          <div class="danger-alert" v-html="error" />
+          <br />
+          <v-btn dark class="cyan" @click="register"> Register </v-btn>
+        </panel>
+      </v-flex>
+    </v-layout>
   </div>
 </template>
 
 <script>
-import AuthenticationService from '@/services/AuthenticationService'
+import AuthenticationService from "@/services/AuthenticationService";
 export default {
-  data () {
+  data() {
     return {
-      email: '',
-      password: '',
-      error: null
-    }
+      email: "",
+      password: "",
+      error: null,
+    };
   },
   methods: {
-    async register () {
+    async register() {
       try {
         var response = await AuthenticationService.register({
           email: this.email,
-          password: this.password
-        })
-        console.log(response.data)
+          password: this.password,
+        });
+        console.log(response.data);
       } catch (error) {
-        this.error = error.response.data.error
+        this.error = error.response.data.error;
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.container{
+.container {
   text-align: center;
 }
-
 .error {
-  color:red,
+  color: red;
 }
-
 </style>
