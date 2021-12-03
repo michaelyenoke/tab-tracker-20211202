@@ -4,34 +4,46 @@
     <input
           type='email'
           text='email'
-					v-model='email'
+          v-model='email'
           placeholder='email' />
     <br>
     <input
           type='password'
           text='password'
-					v-model='password'
+          v-model='password'
           placeholder='password' />
+    <br>
+    <div class='error' v-html='error' /> 
     <br>
     <button
       @click='register'>
-      Click Here
+      Register
     </button>
 
   </div>
 </template>
 
 <script>
+import AuthenticationService from '@/services/AuthenticationService'
 export default {
   data () {
     return {
-      email: '123',
-      password: 'abc'
+      email: '',
+      password: '',
+      error: null
     }
   },
   methods: {
-    register () {
-      console.log('register button was clicked', this.email, this.password)
+    async register () {
+      try {
+        var response = await AuthenticationService.register({
+          email: this.email,
+          password: this.password
+        })
+        console.log(response.data)
+      } catch (error) {
+        this.error = error.response.data.error
+      }
     }
   }
 }
@@ -42,4 +54,9 @@ export default {
 .container{
   text-align: center;
 }
+
+.error {
+  color:red,
+}
+
 </style>
