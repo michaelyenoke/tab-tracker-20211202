@@ -4,7 +4,7 @@
 
 <script>
   import HelloWorld from '../components/HelloWorld'
-  import RegisterPage from '../components/RegisterPage'
+  
 
   export default {
     name: 'Home',

@@ -2,7 +2,7 @@
   <v-card max-width="450" class="mx-auto">
     <!--上半部的bar-->
     <v-toolbar color="cyan" dark>
-      <v-toolbar-title>Register</v-toolbar-title>
+      <v-toolbar-title>Login</v-toolbar-title>
       <v-spacer></v-spacer>
     </v-toolbar>
 
@@ -12,7 +12,7 @@
         <div class="container">
           <v-layout>
             <v-flex sm-12>
-              <panel title="Register">
+              <panel title="Login">
                 <form name="tab-tracker-form" autocomplete="off">
                   <v-text-field label="Email" v-model="email"></v-text-field>
                   <br />
@@ -26,7 +26,7 @@
                 <br />
                 <div class="danger-alert" v-html="error" />
                 <br />
-                <v-btn dark class="cyan" @click="register"> Register </v-btn>
+                <v-btn dark class="cyan" @click="login"> Login </v-btn>
               </panel>
             </v-flex>
           </v-layout>
@@ -43,16 +43,16 @@ import AuthenticationService from "@/services/AuthenticationService";
 
 
 export default {
-  name:'RegisterPage',
+  name:'LoginPage',
   data:() => ({
     email: "",
     password: "",
     error: null,
   }),
   methods: {
-    async register() {
+    async login() {
       try {
-        var response = await AuthenticationService.register({
+        var response = await AuthenticationService.login({
           email: this.email,
           password: this.password,
         });
@@ -61,7 +61,7 @@ export default {
         this.error = error.response.data.error;
       }
     },
-  },
+   },
 };
 </script>
 
