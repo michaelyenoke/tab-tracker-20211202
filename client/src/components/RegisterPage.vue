@@ -70,7 +70,6 @@ export default {
 .container {
   text-align: center;
   border: red;
-  border-block-color: ;
   }
 .danger-alert {
   color: red;
