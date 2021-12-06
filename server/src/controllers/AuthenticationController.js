@@ -1,4 +1,14 @@
 const User = require('../models/User') 
+const jwt = require('jsonwebtoken')
+const config = require('../config/database_config')
+const database_config = require('../config/database_config')
+
+function jwtSignUser (user) {
+    const ONE_WEEK = 60*60*24*7
+    return jwt.sign(user, database_config.authentication.jwtSecret,{
+        expiresIn: ONE_WEEK
+    })
+}
 
 
 module.exports ={
@@ -45,14 +55,10 @@ module.exports ={
                 })
             }
 
-/*
             const userJson = user.toJSON()
             res.send({
-              user: userJson
-            })*/
-            const userJson = user.toJSON()
-            res.send({
-                user: userJson
+                user: userJson,
+                token: jwtSignUser(userJson)
             })
             
 

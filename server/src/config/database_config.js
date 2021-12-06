@@ -3,9 +3,9 @@
 module.exports = {
     port: 3306,
     db: {
-        database:  'test01',
-        user: 'michaelyenoke',
-        password:  '1qaz2wsx3edc',
+        database: process.env.DB_NAME || 'test01',
+        user: process.env.DB_USER || 'michaelyenoke',
+        password:  process.env.DB_PASS || '1qaz2wsx3edc',
         options: {
             dialect:  'mysql',
             host:  'database-1.cqwpdgcki6p6.ap-southeast-1.rds.amazonaws.com',
@@ -15,5 +15,9 @@ module.exports = {
                 idle: 10000
             }
         }
+    },
+    authentication:{
+        jwtSecret: process.env.JWT_SECERT || 'secret'
     }
+
 }

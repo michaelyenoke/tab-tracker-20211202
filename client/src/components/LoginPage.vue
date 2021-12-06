@@ -12,7 +12,7 @@
         <div class="container">
           <v-layout>
             <v-flex sm-12>
-              <panel title="Login">
+              <div title="Login">
                 <form name="tab-tracker-form" autocomplete="off">
                   <v-text-field label="Email" v-model="email"></v-text-field>
                   <br />
@@ -27,7 +27,7 @@
                 <div class="danger-alert" v-html="error" />
                 <br />
                 <v-btn dark class="cyan" @click="login"> Login </v-btn>
-              </panel>
+              </div>
             </v-flex>
           </v-layout>
         </div>
