@@ -56,6 +56,7 @@ export default {
           email: this.email,
           password: this.password,
         });
+        // 查看
         console.log(response.data);
       } catch (error) {
         this.error = error.response.data.error;

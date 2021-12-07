@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken')
 const config = require('../config/database_config')
 const database_config = require('../config/database_config')
 
+// JWT token
 function jwtSignUser (user) {
     const ONE_WEEK = 60*60*24*7
     return jwt.sign(user, database_config.authentication.jwtSecret,{
@@ -11,6 +12,7 @@ function jwtSignUser (user) {
 }
 
 
+//
 module.exports ={
     async register (req, res) {
         try {
@@ -34,6 +36,8 @@ module.exports ={
             })
 
             //查看問題：
+            console.log('kk')
+            console.log(password)
             console.log('user',user.toJSON())    
 
             if(!user){
@@ -41,10 +45,14 @@ module.exports ={
                     error: 'The login information was incorrect'
                 })
             }
-
-            const isPasswordValid = password === user.password
+            
+            const isPasswordValid = await user.comparePassword(password) 
+            //12345678
+            //這個參數要送進去 User.js進行比較 -> 得到true就可以進行下去
+            // const isPasswordValid = true 
             
             //查看問題：
+            console.log('ll')
             console.log(password, user.password)
             console.log(isPasswordValid)
             console.log('hi')

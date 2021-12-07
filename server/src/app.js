@@ -13,6 +13,7 @@ require('./routes')(app)
 // 同步資料庫
 const User = require('./models/User') 
 User.sync({})
+// User.sync({force:true})
 
 // 把 node 的 port 加回來; 和 rds 的 port 分開
 app.listen(8081);
