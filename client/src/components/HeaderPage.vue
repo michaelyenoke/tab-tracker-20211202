@@ -22,12 +22,21 @@
         <router-link to="register"> 
         -->
         <!--須先確認有寫進 index.js 的路由(name)中-->
-        <v-btn text dark
+
+        
+
+        <v-btn 
+          v-if="!$store.state.isUserLoggedIn"
+          text 
+          dark
           @click="navigateTo({name:'login'})">  
           Log In
         </v-btn>
 
-        <v-btn text dark
+        <v-btn 
+          v-if="!$store.state.isUserLoggedIn"
+          text 
+          dark
           @click="navigateTo({name:'register'})">  
           Sign Up
         </v-btn>

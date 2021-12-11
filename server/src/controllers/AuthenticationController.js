@@ -37,7 +37,7 @@ module.exports ={
 
             //查看問題：
             console.log('kk')
-            console.log(password)
+            console.log(password) //從body傳進來的 12345678
             console.log('user',user.toJSON())    
 
             if(!user){

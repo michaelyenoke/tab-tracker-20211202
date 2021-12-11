@@ -26,7 +26,12 @@
                 <br />
                 <div class="danger-alert" v-html="error" />
                 <br />
-                <v-btn dark class="cyan" @click="register"> Register </v-btn>
+                <v-btn 
+                  dark 
+                  class="cyan" 
+                  @click="register"> 
+                  Register 
+                </v-btn>
               </div>
             </v-flex>
           </v-layout>
@@ -39,30 +44,30 @@
 </template>
 
 <script>
-import AuthenticationService from "@/services/AuthenticationService";
-
-
+import AuthenticationService from '@/services/AuthenticationService'
 export default {
-  name:'RegisterPage',
-  data:() => ({
-    email: "",
-    password: "",
-    error: null,
-  }),
-  methods: {
-    async register() {
-      try {
-        var response = await AuthenticationService.register({
-          email: this.email,
-          password: this.password,
-        });
-        console.log(response.data);
-      } catch (error) {
-        this.error = error.response.data.error;
-      }
-    },
+  data () {
+    return {
+      email: '',
+      password: '',
+      error: null
+    }
   },
-};
+  methods: {
+    async register () {
+      try {
+        const response = await AuthenticationService.register({
+          email: this.email,
+          password: this.password
+        })
+        await this.$store.dispatch('setToken', response.data.token)
+        await this.$store.dispatch('setUser', response.data.user)
+      } catch (error) {
+        this.error = error.response.data.error
+      }
+    }
+  }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

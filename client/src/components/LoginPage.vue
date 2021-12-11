@@ -5,7 +5,6 @@
       <v-toolbar-title>Login</v-toolbar-title>
       <v-spacer></v-spacer>
     </v-toolbar>
-
     <!--  List 的部分 -->
     <v-list three-line>
       <template>
@@ -31,8 +30,6 @@
             </v-flex>
           </v-layout>
         </div>
-
-        
       </template>
     </v-list>
   </v-card>
@@ -41,34 +38,39 @@
 <script>
 import AuthenticationService from "@/services/AuthenticationService";
 
-
 export default {
-  name:'LoginPage',
-  data:() => ({
+  name: "LoginPage",
+  data: () => ({
     email: "",
     password: "",
     error: null,
   }),
+
+  // methods -> 函式
+  // computed -> 用起來像函式,結果是一個值
   methods: {
+    //computed get set? v-model? -> password & email
     async login() {
       try {
-        var response = await AuthenticationService.login({
+        const response = await AuthenticationService.login({
           email: this.email,
           password: this.password,
         });
-        // 查看
-        console.log(response.data);
+        // 查看 const response 改成 var
+        // console.log(response.data)
+        // 僅僅需要 await! 基本語法觀念！
+        await this.$store.dispatch("setToken", response.data.token);
+        await this.$store.dispatch("setUser", response.data.user);
       } catch (error) {
         this.error = error.response.data.error;
       }
     },
-   },
+  },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
 .danger-alert {
   color: red;
 }
