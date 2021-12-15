@@ -18,7 +18,7 @@ User.sync({}) // 資料庫會加上s
 // 同步資料庫
 const Song = require('./models/Song') 
 //console.log(Song) //song
-Song.sync({force:true}) // 資料庫會加上s 
+Song.sync({}) // 資料庫會加上s 
 // Song.sync({force:true})
 
 // 把 node 的 port 加回來; 和 rds 的 port 分開
