@@ -1,16 +1,7 @@
 <template>
   <v-card max-width="450" class="mx-auto">
-    <!--上半部的bar-->
-    <v-toolbar color="cyan" dark>
-      <v-toolbar-title>Register</v-toolbar-title>
-      <v-spacer></v-spacer>
-    </v-toolbar>
-
-    <!--  List 的部分 -->
-    <v-list three-line>
-      <template>
-        <div class="container">
-          <v-layout>
+    
+          <card-panel title="Register">  
             <v-flex sm-12>
               <div title="Register">
                 <form name="tab-tracker-form" autocomplete="off">
@@ -20,8 +11,8 @@
                     label="Password"
                     type="password"
                     v-model="password"
-                    autocomplete="new-password"
-                  ></v-text-field>
+                    autocomplete="new-password">
+                  </v-text-field>
                 </form>
                 <br />
                 <div class="danger-alert" v-html="error" />
@@ -34,17 +25,15 @@
                 </v-btn>
               </div>
             </v-flex>
-          </v-layout>
-        </div>
+          </card-panel>
 
-        
-      </template>
-    </v-list>
   </v-card>
 </template>
 
 <script>
 import AuthenticationService from '@/services/AuthenticationService'
+import CardPanel from '@/components/CardPanel'
+
 export default {
   data () {
     return {
@@ -66,6 +55,9 @@ export default {
         this.error = error.response.data.error
       }
     }
+  },
+  components:{
+    CardPanel
   }
 }
 </script>

@@ -1,4 +1,3 @@
-
 const Sequelize = require('sequelize')
 const sequelize = require('./index')
 const Promise = require('bluebird')
@@ -23,13 +22,14 @@ function hashPassword (user, options) {
 
 
 
-  const User = sequelize.define('user', {
+  const User = sequelize.define('usernew', { //資料庫名稱
     email: {
       type: Sequelize.STRING,
       unique: true
     },
     password: Sequelize.STRING
-  }, {
+    },
+    {
     hooks: {
       beforeCreate: hashPassword,
       //beforeUpdate: hashPassword,
