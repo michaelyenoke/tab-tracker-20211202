@@ -3,18 +3,28 @@
     
           <card-panel title="Register">  
             <v-flex sm-12>
+              <!-- text-field-->
               <div title="Register">
                 <form name="tab-tracker-form" autocomplete="off">
-                  <v-text-field label="Email" v-model="email"></v-text-field>
+                  <v-text-field 
+                    label="Email" 
+                    v-model="email"
+                    :rules="emailRules"
+                    required
+                  ></v-text-field>
                   <br />
                   <v-text-field
                     label="Password"
                     type="password"
                     v-model="password"
-                    autocomplete="new-password">
-                  </v-text-field>
+                    autocomplete="new-password"
+                    :rules="passwordRules"
+                    error-count="5"
+                    required
+                  ></v-text-field>
                 </form>
                 <br />
+                <!--button-->
                 <div class="danger-alert" v-html="error" />
                 <br />
                 <v-btn 
@@ -39,7 +49,19 @@ export default {
     return {
       email: '',
       password: '',
-      error: null
+      error: null,
+      emailRules: [
+        v => !!v || 'Email is required',
+        v => /.+@.+/.test(v) || 'Email must be valid'
+      ],
+      passwordRules:[
+        v => !!v || 'Password is required',
+        v => (v && v.length >= 5) || 'Password must have 5+ characters',
+        v => /(?=.*[A-Z])/.test(v) || 'Must have one uppercase character',
+        v => /(?=.*\d)/.test(v) || 'Must have one number',
+        v => /([!@$%])/.test(v) || 'Must have one special character [!@#$%]'
+      ]
+
     }
   },
   methods: {

@@ -22,6 +22,10 @@
                   <v-text-field 
                     label="Email" 
                     v-model="email"
+                    :rules="[
+                      v => !!v || 'Email is required'
+                    ]"
+                    required
                     >
                   </v-text-field>
                   <br>
@@ -29,7 +33,11 @@
                     label="Password"
                     type="password"
                     v-model="password"
-                    autocomplete="new-password">
+                    autocomplete="new-password"
+                    :rules="[
+                      v => !!v || 'Password is required'
+                    ]"
+                    >
                   </v-text-field>
                 </form>
                 <br />
