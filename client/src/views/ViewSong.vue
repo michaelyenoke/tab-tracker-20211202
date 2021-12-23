@@ -1,17 +1,18 @@
 <template>
   <!--根據components自動轉換格式-->
-  <create-songs-page />
+  <view-song /> 
 </template>
 
 
 <script>
-import CreateSongsPage from '../components/CreateSongsPage'
+  import ViewSongPage from '../components/ViewSongPage'
 
   export default {
-    name: 'CreateSongs',
+    name: 'song',
+
     components: {
-      CreateSongsPage
+      ViewSongPage
+    
     },
   }
 </script>
-
