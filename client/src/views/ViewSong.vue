@@ -1,6 +1,6 @@
 <template>
   <!--根據components自動轉換格式-->
-  <view-song /> 
+  <view-song-page /> 
 </template>
 
 

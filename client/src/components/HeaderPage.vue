@@ -1,5 +1,5 @@
+<!--直接送到App.vue-->
 <template>
-
     <div>
     <v-app-bar app color="cyan" dark>
       <div class="d-flex align-center mr-4"></div>

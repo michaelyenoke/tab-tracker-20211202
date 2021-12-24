@@ -8,7 +8,7 @@
 import CreateSongPage from '../components/CreateSongPage'
 
   export default {
-    name: 'CreateSong',
+    name: 'songs-create',
     components: {
       CreateSongPage
     },

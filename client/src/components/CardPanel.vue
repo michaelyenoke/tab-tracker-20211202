@@ -7,9 +7,10 @@
     </v-toolbar>
 
     <!--add button-->
+    <!--slot : 你自己可以變動的部分 -->
     <slot name="action"></slot>
-    <!-- three-line List -->
 
+    <!-- three-line List -->
     <v-list three-line>
       <template>
         <div class="container">
@@ -20,6 +21,7 @@
       </template>
     </v-list>
     <!-- three-line List -->
+
   </div>
 </template>
 

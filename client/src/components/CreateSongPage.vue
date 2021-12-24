@@ -5,19 +5,21 @@
       <v-layout>
         <card-panel title="Song Metadata">
           <v-flex xl-12 offset-xl-12>
-            <!--create data-->
-            <v-text-field label="Title" :rules="['Required#']" required v-model="song.title"></v-text-field>
-            <!--create data-->
-            <v-text-field label="Artist" :rules="['Required']" required  v-model="song.artist"></v-text-field>
-            <!--create data-->
-            <v-text-field label="Genre"  :rules="['Required']" required v-model="song.genre"></v-text-field>
-            <!--create data-->
-            <v-text-field label="Album"  :rules="['Required']" required v-model="song.album"></v-text-field>
+            <!--create data
+            <v-text-field label="Title" :rules="['Required#']" required v-model="song.title"></v-text-field>-->
+            <v-text-field label="Title"  v-model="song.title"></v-text-field>
+            <!--create data
+            <v-text-field label="Artist" :rules="['Required']" required  v-model="song.artist"></v-text-field>-->
+            <v-text-field label="Artist"  v-model="song.artist"></v-text-field>
+            <!--create data
+            <v-text-field label="Genre"  :rules="['Required']" required v-model="song.genre"></v-text-field>-->
+            <v-text-field label="Genre"  v-model="song.genre"></v-text-field>
+            <!--create data
+            <v-text-field label="Album"  :rules="['Required']" required v-model="song.album"></v-text-field>-->
+            <v-text-field label="Album"  v-model="song.album"></v-text-field>
             <!--create data-->
             <v-text-field
               label="Album Image Url"
-              :rules="['Required']" 
-              required
               v-model="song.albumImageUrl"
             ></v-text-field>
           </v-flex>
@@ -30,8 +32,6 @@
               <v-textarea
                 name="input-7-1" 
                 label="Tab"
-                :rules="['Required']" 
-                required
                 value="Please type here."
                 v-model="song.tab"
                 hint="Hint text"
@@ -42,8 +42,6 @@
               <v-textarea
                 name="Lyrics"
                 label="Default style"
-                :rules="['Required']" 
-                required
                 value="Please type here."
                 v-model="song.lyrics"
                 hint="Hint text"
@@ -85,6 +83,7 @@ export default {
       error:''
     };
   },
+
   methods: {
       async create () {
         //this.error = null
@@ -97,7 +96,7 @@ export default {
 
 
         try {
-            await SongsService.post(this.song)
+            this.song = await SongsService.post(this.song)
             //console.log('NBA')
             //console.log(this.song)
             // create後轉址到songs

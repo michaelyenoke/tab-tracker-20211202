@@ -1,13 +1,13 @@
 <template>
   <v-card max-width="750" class="mx-auto">
-    <!-- CardPanel.vue -->
+    <!-- CardPanel.vue : slot  -->
     <card-panel title="Songs">
 
       <!--add buttion-->  
       
       <div slot="action">
         <v-btn
-            @click="navigateTo({name:'songscreate'})" 
+            @click="navigateTo({name:'songs-create'})" 
             class="green accent-2" fab light medium absolute right middle>
           <v-icon>add</v-icon>
         </v-btn>
@@ -42,8 +42,10 @@
                       class="cyan"
                       @click="navigateTo({
                            name:'song',
-                           params:{
-                              songId: song.id  
+                           params:{ 
+                              songId: song.id
+                              //songId: 'test'
+                              //這裡決定params出現什麼
                            } 
                       })"
                   >  
@@ -57,23 +59,16 @@
               </v-flex>        
           </v-layout>
 
-          <!--
-          {{ song.id }}
-          {{ song.artist }}
-          {{ song.album }}
-          {{ song.genre }}
-          -->
-
         </div>
       </v-flex>
     </card-panel>
-    <!-- CardPanel.vue -->
+    <!-- CardPanel.vue : slot -->
   </v-card>
 </template>
 
 <script>
-import SongsService from "@/services/SongsService";
-import CardPanel from "@/components/CardPanel";
+import SongsService from "@/services/SongsService"
+import CardPanel from "@/components/CardPanel"
 
 export default {
   components: {
@@ -81,7 +76,7 @@ export default {
   },
   data() {
     return {
-      songs: null,
+      songs: '',
     };
   },
   async mounted() {

@@ -5,12 +5,11 @@ export default {
     return Api().get('songs')
   },
 
-  show (songId) {
-    return Api().get('songs/${songId}')
-  },
-
   post (song) {
     return Api().post('songs',song)
+  },
+  show (songId) {
+    return Api().get('songs/'+songId)
   }
 
 }
