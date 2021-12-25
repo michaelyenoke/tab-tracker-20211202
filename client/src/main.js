@@ -4,7 +4,13 @@ import router from './router'
 import store from './store'
 import vuetify from './plugins/vuetify'
 import {sync} from 'vuex-router-sync' // 用來同步sync網址與資料(頁面)
+import VueYouTubeEmbed from 'vue-youtube-embed'
 
+Vue.use(VueYouTubeEmbed)
+// if you don't want install the component globally
+//Vue.use(VueYouTubeEmbed, { global: false })
+// if you want to install the component globally with a different name
+//Vue.use(VueYouTubeEmbed, { global: true, componentId: "youtube-media" })
 //console.log(router)
 
 Vue.config.productionTip = false

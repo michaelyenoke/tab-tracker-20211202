@@ -5,59 +5,32 @@
         <song-metadata :song="song" />
     </card-panel>
 
-    <v-layout>
+  
+
     <card-panel title="Lyrics">
         <song-lyrics :song="song" />
     </card-panel>
 
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/Amq-qlqbjYA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </v-layout>
+
+    <card-panel title="Youtube">
+        <you-tube-part :youtubeId="youtubeId"/>
+    </card-panel>
 
   </v-card>
-  <!--
-  <v-card max-width="750" class="mx-auto">
-    <v-layout>
-        <card-panel title="Song Metadata">
-          <v-flex xs6>
-          <div class="song-id">
-            {{ song.id }}
-          </div>
-          <div class="song-title">
-            {{ song.title }}
-          </div>
-          <div class="song-artist">
-            {{ song.artist }}
-          </div>
-          <div class="song-genre">
-            {{ song.genre }}
-          </div>
-        </v-flex>
-        <v-flex xs6>
-          <img class="album-image" v-bind:src="song.albumImageUrl" />
-          <br />
-          {{ song.album }}
-        </v-flex>
-      </card-panel>
-
-      <card-panel title="Lyrics">
-        {{ song.lyrics }}
-      </card-panel>
-
-     
-    </v-layout>
-  </v-card>-->
 </template>
 
 <script>
-import SongsService from "@/services/SongsService";
-import CardPanel from "@/components/CardPanel";
-import SongMetadata from './SongMetadata.vue';
-import SongLyrics from './SongLyrics.vue';
+import SongsService from "@/services/SongsService"
+import CardPanel from "@/components/CardPanel"
+import SongMetadata from './SongMetadata'
+import SongLyrics from './SongLyrics'
+import YouTubePart from './YouTubePart'
 
 export default {
   data() {
     return {
       song: "",
+      youtubeId:""
     };
   },
   async mounted() {
@@ -73,11 +46,14 @@ export default {
     //console.log(songId)
     //console.log('song',this.song)
     //console.log('ok3')
+    this.youtubeId = await this.song.youtubeId
+    console.log(this.youtubeId)
   },
   components: {
     CardPanel,
     SongMetadata,
-    SongLyrics
+    SongLyrics,
+    YouTubePart
 
   },
 };

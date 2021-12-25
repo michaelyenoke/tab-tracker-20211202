@@ -1,7 +1,7 @@
 <template>
   <div>
     <!--上半部的bar-->
-    <v-toolbar color="cyan" dark>
+    <v-toolbar color="#FFC1CB" dark>
       <v-toolbar-title>{{ title }}</v-toolbar-title>
       <v-spacer></v-spacer>
     </v-toolbar>

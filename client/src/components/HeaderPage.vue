@@ -1,13 +1,13 @@
 <!--直接送到App.vue-->
 <template>
     <div>
-    <v-app-bar app color="#FFC1CB" dark>
+    <v-app-bar app color="black" dark>
       <div class="d-flex align-center mr-4"></div>
       <v-toolbar-title class="mr-4" >
         <span
           class="home"
           @click="navigateTo({name:'root'})"> 
-          tabtracker
+          BLACKPINK
         </span>
       </v-toolbar-title>
       
