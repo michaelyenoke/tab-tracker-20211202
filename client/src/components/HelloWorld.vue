@@ -1,14 +1,18 @@
 <template>
   <v-container>
     <v-row class="text-center">
+
+
       <v-col cols="12">
         <v-img
-          :src="require('../assets/logo.svg')"
+          :src="require('../assets/blackpinkdesktop.png')"
           class="my-3"
           contain
-          height="200"
+          height="600"
         />
       </v-col>
+
+
 
       <v-col class="mb-4">
         <h1 class="display-2 font-weight-bold mb-3">
@@ -24,6 +28,8 @@
           >Discord Community</a>
         </p>
       </v-col>
+
+
 
       <v-col
         class="mb-5"
@@ -46,6 +52,9 @@
         </v-row>
       </v-col>
 
+
+
+
       <v-col
         class="mb-5"
         cols="12"
@@ -67,6 +76,9 @@
         </v-row>
       </v-col>
 
+
+
+
       <v-col
         class="mb-5"
         cols="12"
@@ -87,6 +99,9 @@
           </a>
         </v-row>
       </v-col>
+    
+
+
     </v-row>
   </v-container>
 </template>

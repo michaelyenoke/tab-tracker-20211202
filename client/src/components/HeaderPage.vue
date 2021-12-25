@@ -1,7 +1,7 @@
 <!--直接送到App.vue-->
 <template>
     <div>
-    <v-app-bar app color="cyan" dark>
+    <v-app-bar app color="#FFC1CB" dark>
       <div class="d-flex align-center mr-4"></div>
       <v-toolbar-title class="mr-4" >
         <span

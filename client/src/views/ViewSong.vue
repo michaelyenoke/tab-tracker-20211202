@@ -5,7 +5,7 @@
 
 
 <script>
-  import ViewSongPage from '../components/ViewSongPage'
+  import ViewSongPage from '../components/ViewSongPage/ViewSongPage.vue'
 
   export default {
     name: 'song',

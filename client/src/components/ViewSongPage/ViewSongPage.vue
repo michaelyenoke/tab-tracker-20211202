@@ -1,5 +1,21 @@
 <template>
   <v-card max-width="750" class="mx-auto">
+
+    <card-panel title="Song Metadata">
+        <song-metadata :song="song" />
+    </card-panel>
+
+    <v-layout>
+    <card-panel title="Lyrics">
+        <song-lyrics :song="song" />
+    </card-panel>
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Amq-qlqbjYA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </v-layout>
+
+  </v-card>
+  <!--
+  <v-card max-width="750" class="mx-auto">
     <v-layout>
         <card-panel title="Song Metadata">
           <v-flex xs6>
@@ -29,12 +45,14 @@
 
      
     </v-layout>
-  </v-card>
+  </v-card>-->
 </template>
 
 <script>
 import SongsService from "@/services/SongsService";
 import CardPanel from "@/components/CardPanel";
+import SongMetadata from './SongMetadata.vue';
+import SongLyrics from './SongLyrics.vue';
 
 export default {
   data() {
@@ -58,6 +76,9 @@ export default {
   },
   components: {
     CardPanel,
+    SongMetadata,
+    SongLyrics
+
   },
 };
 </script>
