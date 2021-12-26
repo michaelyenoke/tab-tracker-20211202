@@ -40,23 +40,13 @@ module.exports ={
     },
 
     async put (req, res) {
-        console.log('hello3')
-        console.log(req.body)
-        console.log('hello4')
-        //console.log(req)
         try {
             const song = await Song.update(req.body,{
                 where:{
                     id: req.params.songId
                 }
             })
-            console.log('hello1')
-            console.log(req.body)
-            console.log(song)
-            console.log(req.params.songId)
             res.send(req.body)
-            console.log('hello6')
-            console.log(req.body)
         } catch (err) {
             await res.status(500).send({
                 error: 'an error has occured trying to update the song'

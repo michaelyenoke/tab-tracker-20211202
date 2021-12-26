@@ -131,7 +131,7 @@
                 <v-col cols="24" md="12">
                   <v-text-field
                     v-model="song.lyrics"
-                    :counter="1000"
+                    :counter="2000"
                     :error-messages="errors"
                     label="Lyrics"
                     required
@@ -283,6 +283,7 @@ export default {
   async mounted() {
     const songId = this.$store.state.route.params.songId;
     this.song = (await SongsService.show(songId)).data;
+    console.log(this.song)
   },
   
   // 按鈕 save
@@ -291,20 +292,24 @@ export default {
       // form validation
       await this.$refs.observer.validate();
 
-      // catch the id of the song from route
-      const songId = await this.$store.state.route.params.songId;
+
       //console.log(songId)
       try {
         // update data by put
-        this.song = (await SongsService.put(this.song)).data;
 
         console.log(this.song)
+        console.log('hello1')
+        const songId = this.$store.state.route.params.songId
+        await SongsService.put(this.song,songId) // SongsService 有兩個參數,這裡要帶兩個
+
+       
+
 
         // send to page of song id you want to edit        
-        this.$router.push({
-          name: "songs",
+        await this.$router.push({
+          name: "song",
           params: {
-            songId: songId,
+            songId: this.$store.state.route.params.songId,
           },
         });
       } catch (error) {
