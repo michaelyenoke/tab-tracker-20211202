@@ -47,7 +47,7 @@ export default {
     //console.log('song',this.song)
     //console.log('ok3')
     this.youtubeId = await this.song.youtubeId
-    console.log(this.youtubeId)
+    //console.log(this.youtubeId)
   },
   components: {
     CardPanel,

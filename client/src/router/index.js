@@ -38,7 +38,7 @@ const routes = [
     component: CreateSong  // views
   },
   {
-    path: '/songs/edit',
+    path: '/songs/:songId/edit',
     name: 'songs-edit',
     component: EditSong  // views
   },

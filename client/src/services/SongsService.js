@@ -10,6 +10,10 @@ export default {
   },
   show (songId) {
     return Api().get('songs/'+songId)
+  },
+
+  put(songId,song) {
+    return Api().put('songs/'+songId+'/edit',song)
   }
 
 }
