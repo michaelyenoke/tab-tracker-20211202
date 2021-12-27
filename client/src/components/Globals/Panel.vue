@@ -6,16 +6,13 @@
       <v-spacer></v-spacer>
     </v-toolbar>
 
-    <!--add button-->
-    <!--slot : 你自己可以變動的部分 -->
-    <slot name="action"></slot>
 
     <!-- three-line List -->
     <v-list three-line>
       <template>
         <div class="container">
           <v-layout>
-            <slot> No slots content defined. </slot>
+            <slot> No slots content defined. (2)</slot>
           </v-layout>
         </div>
       </template>

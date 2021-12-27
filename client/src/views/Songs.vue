@@ -5,7 +5,7 @@
 
 
 <script>
-  import SongsPage from '../components/SongsPage'
+  import SongsPage from '@/components/SongsPage/index'
 
   export default {
     name: 'Songs',

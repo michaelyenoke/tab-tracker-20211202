@@ -4,16 +4,26 @@
     <v-app-bar app color="black" dark>
       <div class="d-flex align-center mr-4"></div>
       <v-toolbar-title class="mr-4" >
-        <span
+        <!--<span
           class="home"
           @click="navigateTo({name:'root'})"> 
           BLACKPINK
-        </span>
+        </span>-->
+        <router-link
+          class="home"
+          tag="span"
+          :to="{
+            name:'root'
+          }">
+          BLACKPINK
+          </router-link>
+
       </v-toolbar-title>
       
       <!--TODO: Implement Me-->
       <v-toolbar-items>
          <v-btn 
+         class="home"
          text 
          dark
          @click="navigateTo({name:'songs'})"
@@ -24,26 +34,29 @@
 
       <v-spacer></v-spacer>
       <v-toolbar-items>
-        <!--
-        <router-link to="register"> 
-        -->
-        <!--須先確認有寫進 index.js 的路由(name)中-->
+    
 
         
 
         <v-btn 
+          class="home"
           v-if="!$store.state.isUserLoggedIn"
           text 
           dark
           @click="navigateTo({name:'login'})">  
           Log In
         </v-btn>
-
+       
+        <!--
+        <router-link to="register"> 
+        -->
+        <!--須先確認有寫進 index.js 的路由(name)中-->
         <v-btn 
           v-if="!$store.state.isUserLoggedIn"
           text 
           dark
-          @click="navigateTo({name:'register'})">  
+          @click="navigateTo({name:'register'})"
+          >  
           Sign Up
         </v-btn>
 

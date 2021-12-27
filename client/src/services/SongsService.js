@@ -1,8 +1,13 @@
 import Api from '@/services/Api'
 
 export default {
-  get () {
-    return Api().get('songs')
+  get (search) {
+    return Api().get('songs',{
+      params: {
+        search: search
+        //someRandomKey:search
+      }
+    })
   },
 
   post (song) {

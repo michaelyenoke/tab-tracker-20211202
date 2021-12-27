@@ -4,7 +4,7 @@
 
     <validation-observer ref="observer" v-slot="{ invalid }">
       <form @submit.prevent="submit">
-        <card-panel title="Song Metadata">
+        <panel title="Song Metadata">
           <v-layout>
             <v-flex xs12>
 
@@ -146,7 +146,7 @@
 
             </v-flex>
           </v-layout>
-        </card-panel>
+        </panel>
 
         <v-btn class="mr-4" type="submit" :disabled="invalid"> submit </v-btn>
 
@@ -164,7 +164,7 @@ import {
   ValidationProvider,
   setInteractionMode,
 } from "vee-validate";
-import CardPanel from "@/components/CardPanel";
+
 import SongsService from "@/services/SongsService";
 
 setInteractionMode("eager");
@@ -196,7 +196,7 @@ extend("email", {
 
 export default {
   components: {
-    CardPanel,
+    
     ValidationProvider,
     ValidationObserver,
   },

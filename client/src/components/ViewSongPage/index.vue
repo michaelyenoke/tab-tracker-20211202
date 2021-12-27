@@ -1,27 +1,26 @@
 <template>
   <v-card max-width="750" class="mx-auto">
 
-    <card-panel title="Song Metadata">
+    <panel title="Song Metadata">
         <song-metadata :song="song" />
-    </card-panel>
+    </panel>
 
   
 
-    <card-panel title="Lyrics">
+    <panel title="Lyrics">
         <song-lyrics :song="song" />
-    </card-panel>
+    </panel>
 
 
-    <card-panel title="Youtube">
+    <panel title="Youtube">
         <you-tube-part :youtubeId="youtubeId"/>
-    </card-panel>
+    </panel>
 
   </v-card>
 </template>
 
 <script>
 import SongsService from "@/services/SongsService"
-import CardPanel from "@/components/CardPanel"
 import SongMetadata from './SongMetadata'
 import SongLyrics from './SongLyrics'
 import YouTubePart from './YouTubePart'
@@ -50,7 +49,6 @@ export default {
     //console.log(this.youtubeId)
   },
   components: {
-    CardPanel,
     SongMetadata,
     SongLyrics,
     YouTubePart

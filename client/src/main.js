@@ -5,6 +5,7 @@ import store from './store'
 import vuetify from './plugins/vuetify'
 import {sync} from 'vuex-router-sync' // 用來同步sync網址與資料(頁面)
 import VueYouTubeEmbed from 'vue-youtube-embed'
+import Panel from '@/components/Globals/Panel'
 
 Vue.use(VueYouTubeEmbed)
 // if you don't want install the component globally
@@ -14,6 +15,10 @@ Vue.use(VueYouTubeEmbed)
 //console.log(router)
 
 Vue.config.productionTip = false
+
+// 將 CardPanel 設定為 Global 元素
+Vue.component('panel',Panel)
+
 
 // 這裡會影響 ViewSongPage.vue 裡面 const songId = this.$store.state.route.params.songId
 // 在這裡 store 變動會同步  router 的變動(當然也包含以下的子檔案)

@@ -12,6 +12,11 @@ import EditSong from '../views/EditSong.vue'
 Vue.use(VueRouter)
 
 const routes = [
+  //預設首頁
+  {
+    path: '*',
+    redirect: 'root'
+  },
   {
     path: '/',
     name: 'root',

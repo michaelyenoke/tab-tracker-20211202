@@ -11,7 +11,7 @@
       <template>
         <div class="container">
           <v-layout>-->
-    <card-panel title="Login">
+    <panel title="Login">
       <v-layout>
         <v-flex sm-12>
           <div title="Login">
@@ -40,7 +40,7 @@
           </div>
         </v-flex>
       </v-layout>
-    </card-panel>
+    </panel>
     <!--</v-layout>
         </div>        
       </template>
@@ -50,7 +50,7 @@
 
 <script>
 import AuthenticationService from "@/services/AuthenticationService";
-import CardPanel from "@/components/CardPanel";
+
 
 export default {
   name: "LoginPage",
@@ -81,7 +81,7 @@ export default {
     },
   },
   components: {
-    CardPanel,
+   
   },
 };
 </script>

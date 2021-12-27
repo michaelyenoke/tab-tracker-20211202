@@ -1,27 +1,20 @@
 <template>
-  <v-card max-width="750" class="mx-auto">
-
-
-    <!-- CardPanel.vue : slot  -->
-    <card-panel title="Songs">
-      <!--add buttion-->
-
-      <div slot="action">
-        <v-btn
-          @click="navigateTo({ name: 'songs-create' })"
-          class="green accent-2"
-          fab
-          light
-          medium
-          absolute
-          right
-          middle
-        >
-          <v-icon>add</v-icon>
-        </v-btn>
-      </div>
-
-      <!--add buttion-->
+<panel title="Songs" class="mt-5">
+ <v-layout>
+      <!--the add buttion-->
+      <v-btn
+        @click="navigateTo({ name: 'songs-create' })"
+        class="green accent-2"
+        fab
+        light
+        medium
+        absolute
+        right
+        middle
+      >
+        <v-icon>add</v-icon>
+      </v-btn>
+      <!--the add buttion-->
 
       <v-flex xs8 offset-xs2>
         <div v-for="song in songs" class="song" :key="song.id">
@@ -62,39 +55,49 @@
           </v-layout>
         </div>
       </v-flex>
-    </card-panel>
-    <!-- CardPanel.vue : slot -->
- 
- 
-  </v-card>
+ </v-layout>
+</panel>
 </template>
 
 <script>
 import SongsService from "@/services/SongsService";
-import CardPanel from "@/components/CardPanel";
+
 
 export default {
   components: {
-    CardPanel,
   },
   data() {
     return {
       songs: "",
     };
   },
-  async mounted() {
-    // do a request to the backend for all the songs
-    // get request
-    this.songs = (await SongsService.get()).data;
-    //console.log('songs', this.songs)
-  },
+  
+
   methods: {
     navigateTo(route) {
       this.$router.push(route);
     },
   },
+
+  // //將這部分放進去 watch 中 -> immediate 可以取代
+  // async mounted() {
+  //   // do a request to the backend for all the songs
+  //   // get request
+  // this.songs = (await SongsService.get()).data;
+  //     //console.log('songs', this.songs)
+  // },
+  
+  watch: {
+    '$route.query.search':{
+      immediate: true,
+      async handler (value) {
+        this.songs =  (await SongsService.get(value)).data
+      }
+    }
+  }
 };
 </script>
+
 <style lang="scss" scoped>
 .song {
   padding: 20px;

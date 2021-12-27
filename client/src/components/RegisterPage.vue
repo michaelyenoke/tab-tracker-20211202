@@ -1,7 +1,7 @@
 <template>
   <v-card max-width="450" class="mx-auto">
     
-          <card-panel title="Register">  
+          <panel title="Register">  
             <v-flex sm-12>
               <!-- text-field-->
               <div title="Register">
@@ -35,14 +35,14 @@
                 </v-btn>
               </div>
             </v-flex>
-          </card-panel>
+          </panel>
 
   </v-card>
 </template>
 
 <script>
 import AuthenticationService from '@/services/AuthenticationService'
-import CardPanel from '@/components/CardPanel'
+
 
 export default {
   data () {
@@ -79,7 +79,7 @@ export default {
     }
   },
   components:{
-    CardPanel
+    
   }
 }
 </script>
