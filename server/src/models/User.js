@@ -41,9 +41,9 @@ function hashPassword (user, options) {
 
 
   User.prototype.comparePassword = function (password) { //傳進來的參數 12345678
-    console.log('jj')
-    console.log(password) //12345678
-    console.log(this.password) // 資料庫內的加密資料
+    //console.log('jj')
+    //console.log(password) //12345678
+    //console.log(this.password) // 資料庫內的加密資料
     return bcrypt.compare(password, this.password) // 這裡應該要加密前者同時跟後者比
   }
 

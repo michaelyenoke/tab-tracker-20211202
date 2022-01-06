@@ -25,16 +25,17 @@ export default {
             }
             if (this.search !== '') {
                 route.query = {  //將搜尋內容綁定在搜尋網址上
-                    search_is: this.search
+                    search: this.search
                 }
             }
             this.$router.push(route)
             //console.log(value)
         }, 700),
-        '$route.query.search_is': {  
+        '$route.query.search': {  
             //反向搜尋(回傳搜尋欄位)
             immediate:true,
-            handler (value) {
+            async handler (value) {
+                //this.search = (await SongsService.index(value)).data 
                 this.search = value
             }
         }

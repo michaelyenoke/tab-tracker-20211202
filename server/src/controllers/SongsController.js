@@ -1,8 +1,10 @@
 const  Song  = require('../models/Song') 
+const { Op } = require("sequelize"); 
 
 module.exports ={
     
-
+  /*
+    // get : get song without search
     async get (req, res) {
         try {
             const songs = await Song.findAll({
@@ -15,26 +17,39 @@ module.exports ={
             })
         }
     },
-    /*
+   */ 
+
+  
+    // get : search & get songs
     async get (req, res) {
         try {
           let songs = ''
           const search = req.query.search
+          //const search ='Aimyon'
+          console.log('#####test2022#####')
+          console.log(search) // ok
           if (search) {
             songs = await Song.findAll({
-              where: {
-                $or: [
-                  'title', 'artist', 'genre', 'album'
-                ].map(key => ({
-                  [key]: {
-                    $like: `%${search}%`
-                  }
-                }))
-              }
+              // 問題就出在 sequelize 的寫法
+            where:{
+              //artist: 'BLACKPINK' 
+              [Op.or]: [
+                'title','artist','genre','album'
+              ].map(key => ({
+                //[key]:search
+                [key]: {
+                  [Op.like]: '%'+search+'%'
+                }  
+
+              }))  
+            }  
+                              
             })
           } else {
             songs = await Song.findAll({
-              limit: 10
+              // 這個修改是有用的證明上面會跑只是沒有作用 ok!
+              // offset 跳過
+              offset: 0, limit: 3 
             })
           }
           res.send(songs)
@@ -44,12 +59,9 @@ module.exports ={
           })
         }
       },
-      */
+     
 
-
-
-
-
+    // post  
     async post (req, res) {
        
         try {
@@ -61,7 +73,8 @@ module.exports ={
             })
         }
     },
-
+    
+    // show
     async show (req, res) {
         try {
             const song = await Song.findByPk(req.params.songId)
@@ -73,6 +86,7 @@ module.exports ={
         }
     },
 
+    // put : update data 
     async put (req, res) {
         try {
             const song = await Song.update(req.body,{
